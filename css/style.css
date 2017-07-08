@@ -1,7 +1,7 @@
 *{
     padding:0;
     margin:0;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Lucida Console';
 }
 
 
@@ -15,7 +15,7 @@
 h1 {
 
   font-size: 40px;
-  color: #F5A623;
+  color: #F2CE1A;
   line-height: 48px;
   display: inline;
 }
@@ -23,7 +23,7 @@ h1 {
 h2 {
   font-style: bold;
   font-size: 24px;
-  color: #999999;
+  color: #525361;
   line-height: 29px;
   padding: 10px;
 }
@@ -82,12 +82,12 @@ a {
 .welcome-message {
   font-style: italic;
   font-size: 18px;
-  color: #F3F3F3;
+  color: #FEAE0D;
   line-height: 20px;
 }
 
 #skillsH3 {
-  color: #F5AE23;
+  color: #F2CE1A;
   display: none;
 }
 
@@ -95,12 +95,12 @@ a {
   display: none;
 }
 
-.orange {
-  background-color: #F5AE23;
+.yellow {
+  background-color: #F2CE1A;
 }
 
-.orange-text {
-  color: #F5AE23;
+.yellow-text {
+  color: #F2CE1A;
 }
 
 .white-text {
@@ -116,12 +116,12 @@ a {
 }
 
 .dark-gray {
-  background-color: #4A4A4A;
+  background-color: #87AF88;
 }
 
 /* TODO: Replace with image later */
 #header {
-  background-color: #484848;
+  background-color: #5E765E;
 }
 
 .flex-box {
@@ -147,6 +147,7 @@ ul {
   padding: 10px;
   width: 200px;
   display: none;
+  border-radius: 50%;
 }
 
 img {
