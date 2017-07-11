@@ -35,15 +35,14 @@ var bio = {
 			}
 		}
 		for (var j = 0, jlen = formattedContactInfo.length; j < jlen; j++) {
-			$("#topContacts").append(formattedContactInfo[j]);
-			$("#footerContacts").append(formattedContactInfo[j]);
+			$("#topContacts, #footerContacts").append(formattedContactInfo[j]);
 		}
 	}
 };
 
 var education = {
-	"schools": [
-		{ "name": "San Francisco State University",
+  "schools": [
+    { "name": "San Francisco State University",
 			"location": "San Francisco, CA",
       "degree": "M.A.",
       "majors": ["Special Education"],
@@ -57,15 +56,15 @@ var education = {
       "dates": "May 2008",
       "url": "www.sfsu.edu"
     }
-	],
-	"onlineCourses": [
+  ],
+  "onlineCourses": [
 		{ "title": "Intro to Programming",
 			"school": "Udacity",
 			"dates": "July 2017",
 			"url": "https://www.udacity.com/course/ud015"
 		}
-	],
-	display: function() {
+  ],
+  display: function() {
 		if(education.schools.length > 0 || education.onlineCourses.length > 0) {
 			for(var i = 0, iLen = education.schools.length; i < iLen; i++) {
 				$("#education").append(HTMLschoolStart);
@@ -74,12 +73,15 @@ var education = {
 				var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[i].degree);
 				var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[i].dates);
 				var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[i].location);
-				var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[i].majors);
 
 				$(".education-entry:last").append(formattedSchoolName + formattedSchoolDegree);
 				$(".education-entry:last").append(formattedSchoolDates);
 				$(".education-entry:last").append(formattedSchoolLocation);
-				$(".education-entry:last").append(formattedSchoolMajor);
+
+				for(var k = 0, kLen = education.schools[i].majors.length; k < kLen; k++) {
+            var formattedSchoolMajor = HTMLschoolMajor.replace("%data%",education.schools[i].majors[k]);
+						$(".education-entry:last").append(formattedSchoolMajor);
+        }
 			}
 
 			if(education.onlineCourses.length > 0) {
@@ -161,34 +163,30 @@ var projects = {
 			"title": "Online Resume",
 			"dates": "July 2017",
 			"description": "Created an online resume as part of Udacity's Intro to Programming Nanodegree. You're reading it now.",
-			"images": [],
+			"images": ["http://www.placehold.it/300x200"],
 			"url": "http://www.greatestmanever.com/"
 		},
     {
 			"title": "One Tall Pour",
 			"dates": "2016",
 			"description": "Created and managed blog focused on self-produced written and visual reviews of breweries, beer bars, and related content.",
-			"images": [],
+			"images": ["http://www.placehold.it/300x200"],
 			"url": "http://www.onetallpour.com"
 		}
 	],
 	display: function() {
-		if(projects.projects.length > 0) {
-			for(var i = 0, iLen = projects.projects.length; i < iLen; i++) {
-				$("#projects").append(HTMLprojectStart);
+		for(var i = 0, iLen = projects.projects.length; i < iLen; i++) {
+			$("#projects").append(HTMLprojectStart);
 
-				var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title).replace("#", projects.projects[i].url);
-				var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[i].dates);
-				var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[i].description);
+			var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title).replace("#", projects.projects[i].url);
+			var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[i].dates);
+			var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[i].description);				$(".project-entry:last").append(formattedProjectTitle);
+			$(".project-entry:last").append(formattedProjectDates);
+			$(".project-entry:last").append(formattedProjectDescription);
 
-				$(".project-entry:last").append(formattedProjectTitle);
-				$(".project-entry:last").append(formattedProjectDates);
-				$(".project-entry:last").append(formattedProjectDescription);
-
-				for(var m = 0, mLen = projects.projects[i].images.length; m < mLen; m++) {
-					var formattedProjectImage = HTMLprojectImage.replace("%data%", projects.projects[m].images[img]);
-					$(".project-entry:last").append(formattedProjectImage);
-				}
+			for(var m = 0, mLen = projects.projects[i].images.length; m < mLen; m++) {
+				var formattedProjectImage = HTMLprojectImage.replace("%data%", projects.projects[i].images[m]);
+				$(".project-entry:last").append(formattedProjectImage);
 			}
 		}
 	}
